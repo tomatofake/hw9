@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+const notification = [
+{
+    app: 'telegram',
+    date: '31/07/2019',
+    sender: 'Ivan Petrov',
+    message: 'Some text message',
+}, 
+{
+    app: 'telegram',
+    date: '31/07/2019',
+    sender: 'Ivan Petrov',
+    message: 'Some text message',
+},
+{
+    app: 'instagram',
+    date: '31/07/2019',
+    sender: 'Ivan Petrov',
+    message: 'Some text message',
+}, 
+{
+    app: 'instagram',
+    date: '31/07/2019',
+    sender: 'Ivan Petrov',
+    message: 'Some text message',
+}
+];
+
+let groups = [];
+
+// let telegram = [];   если я правильно понял, что во втором
+// let instagram = [];  задании сгруппировать надо так
+
+for (let element of notification) {
+    let existingGroups = groups.filter(group => group.app == element.app);
+    if (existingGroups.length > 0) {
+        existingGroups[0].date.push(element.date);
+        existingGroups[0].sender.push(element.sender);
+        existingGroups[0].message.push(element.message);
+    }
+  else {
+    let newGroup = {
+        app: element.app,
+        message: [element.message],
+        sender: [element.sender],
+        date: [element.date]
+    };
+    groups.push(newGroup);
+  }
+}
+
+console.log(groups);
+
+    </script>
+</body>
+</html>
